@@ -16,17 +16,10 @@ public class LuggageLeftForce : MonoBehaviour
         
         //Fetch the Rigidbody from the GameObject with this script attached
         rigidBody = GetComponent<Rigidbody2D>();
-    }
-
-    
-
-    void FixedUpdate()
-    {
-        
-        //Apply the movement vector to the current position, which is
-        //multiplied by deltaTime and speed for a smooth MovePosition
         rigidBody.AddForce(Vector2.left * Random.Range(minSpeed, maxSpeed));
+
     }
+
 
     
 
