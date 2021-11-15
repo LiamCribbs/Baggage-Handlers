@@ -13,6 +13,8 @@ public class Harpoon : MonoBehaviour
         set => rope.rigidbody = value;
     }
 
+    bool attached;
+
     public void Initialize(HarpoonGun gun)
     {
         Gun = gun;
@@ -28,6 +30,7 @@ public class Harpoon : MonoBehaviour
 
     public void AttachToRigidbody(Rigidbody2D attachedRigidbody)
     {
+        attached = true;
         // Destroy current rigidbody if it's on this gameObject
         if (Rigidbody.gameObject == gameObject)
         {
@@ -40,7 +43,7 @@ public class Harpoon : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.attachedRigidbody && !collision.GetComponent<Harpoon>())
+        if (!attached && collision.attachedRigidbody && !collision.GetComponent<Harpoon>())
         {
             AttachToRigidbody(collision.attachedRigidbody);
         }
