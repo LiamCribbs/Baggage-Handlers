@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bags: {fileID: 6324978661015291890, guid: 3647d8c34a8a6ee4e9385a05e9137864, type: 3}
   minTime: 1
-  maxTime: 5
+  maxTime: 4
 --- !u!4 &992292172
 Transform:
   m_ObjectHideFlags: 0
