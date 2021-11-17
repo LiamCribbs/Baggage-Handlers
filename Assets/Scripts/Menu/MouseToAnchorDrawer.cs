@@ -47,7 +47,8 @@ public class MouseToAnchorDrawer : MonoBehaviour
             UILineAnchor anchor = anchors[i];
             line.transform.localPosition = mousePosition;
 
-            Vector2 anchorPosition = anchor.ClosestPoint(mousePosition, stickiness);
+            //Vector2 anchorPosition = anchor.ClosestPoint(mousePosition, stickiness);
+            Vector2 anchorPosition = rectTransform.InverseTransformPoint(anchor.transform.position);
             Vector2 distance = anchorPosition - mousePosition;
 
             float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
