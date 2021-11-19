@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Luggage List
   m_EditorClassIdentifier: 
   luggage:
-  - luggage: {fileID: 0}
+  - luggage: {fileID: 7295345181779800626, guid: 864157fb4d71c51459d3366296a49902, type: 3}
     spawnWeight: 50
     SPAWN_CHANCE: 33%
-  - luggage: {fileID: 0}
+  - luggage: {fileID: 7295345181779800626, guid: 864157fb4d71c51459d3366296a49902, type: 3}
     spawnWeight: 50
     SPAWN_CHANCE: 33%
-  - luggage: {fileID: 0}
+  - luggage: {fileID: 7295345181779800626, guid: 864157fb4d71c51459d3366296a49902, type: 3}
     spawnWeight: 50
     SPAWN_CHANCE: 33%

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 352452421018057889}
   - component: {fileID: 352452421018057898}
   - component: {fileID: -2678566364892741384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Harpoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,8 +144,8 @@ MonoBehaviour:
     maxLength: 10
     looseRopeLength: 0
     defaultSegments: 10
-    segments: 50
-    constraintResolution: 50
+    segments: 20
+    constraintResolution: 20
     gravityForce: {x: 0, y: -1}
     startPosition: {x: 0, y: 0, z: 0}
     endPosition: {x: 0, y: 0}

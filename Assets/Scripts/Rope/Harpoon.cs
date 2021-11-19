@@ -15,6 +15,8 @@ public class Harpoon : MonoBehaviour
 
     bool attached;
 
+    public float attachForceMultiplier = 1f;
+
     public void Initialize(HarpoonGun gun)
     {
         Gun = gun;
@@ -30,6 +32,14 @@ public class Harpoon : MonoBehaviour
 
     public void AttachToRigidbody(Rigidbody2D attachedRigidbody)
     {
+        // Don't attach if we hit a Luggage that already has an attached harpoon
+        if (attachedRigidbody.TryGetComponent(out Luggage hitLuggage) && hitLuggage.AttachedHarpoon)
+        {
+            return;
+        }
+
+        Vector2 velocity = Rigidbody.velocity;
+
         attached = true;
         // Destroy current rigidbody if it's on this gameObject
         if (Rigidbody.gameObject == gameObject)
@@ -37,8 +47,18 @@ public class Harpoon : MonoBehaviour
             Destroy(Rigidbody);
         }
 
+        // Set new rigidbody/parent
         Rigidbody = attachedRigidbody;
         transform.SetParent(Rigidbody.transform);
+
+        // Add velocity to rigidbody
+        Rigidbody.AddForce(velocity * attachForceMultiplier, ForceMode2D.Impulse);
+
+        // Assign ourselves to the hit luggage object
+        if (hitLuggage)
+        {
+            hitLuggage.AttachedHarpoon = this;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
