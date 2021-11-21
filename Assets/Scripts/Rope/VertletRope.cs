@@ -12,7 +12,7 @@ public class VertletRope
     public bool interpolate;
 
     [Space(10)]
-    public int maxLength = 50;
+    public float maxLength = 50;
     public float looseRopeLength = 0.65f;
     public int defaultSegments = 10;
     public int segments;
@@ -58,7 +58,7 @@ public class VertletRope
 
     public void SetSegmentLength()
     {
-        int length = (int)(Vector3.Distance(startPosition, endPosition) + looseRopeLength);
+        float length = Vector3.Distance(startPosition, endPosition) + looseRopeLength;
         if (length > maxLength)
         {
             length = maxLength;

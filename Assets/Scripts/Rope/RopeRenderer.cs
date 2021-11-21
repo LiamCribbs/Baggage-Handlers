@@ -26,4 +26,15 @@ public class RopeRenderer : MonoBehaviour
     {
         rope.DrawRope();
     }
+
+    public void SetLength(float amount)
+    {
+        if (amount < 0f)
+        {
+            amount = 0f;
+        }
+
+        rope.maxLength = amount;
+        rope.SetSegmentLength();
+    }
 }

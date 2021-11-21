@@ -383,6 +383,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 146091975}
   shootSpeed: 20
+  reelInSpeed: 5
+  lengthToCutRope: 1
+  emptyRigidbodyVelXRange: {x: -10, y: 5}
+  emptyRigidbodyVelYRange: {x: 5, y: 100}
   harpoonPrefab: {fileID: 352452421018057899, guid: c38ac09dcd0d8d7459801dd67817df17, type: 3}
 --- !u!1 &1167940982
 GameObject:

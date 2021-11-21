@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rope: {fileID: 352452421018057889}
+  attachForceMultiplier: 1
 --- !u!114 &352452421018057889
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -61,6 +61,29 @@ public class Harpoon : MonoBehaviour
         }
     }
 
+    public void Detach()
+    {
+        // Don't do anything if we're already detached
+        if (!attached)
+        {
+            return;
+        }
+
+        attached = false;
+
+        if (Rigidbody.TryGetComponent(out Luggage hitLuggage))
+        {
+            hitLuggage.AttachedHarpoon = null;
+        }
+
+        Vector3 velocity = Rigidbody.velocity;
+        Rigidbody = gameObject.AddComponent<Rigidbody2D>();
+        Rigidbody.velocity = velocity;
+        transform.SetParent(null);
+
+        Rigidbody.mass = 5f;
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (!attached && collision.attachedRigidbody && !collision.GetComponent<Harpoon>())

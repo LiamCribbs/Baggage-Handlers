@@ -5,6 +5,7 @@ using UnityEngine;
 public class PhysicsRope : RopeRenderer
 {
     public Transform attachedTransform;
+    public Rigidbody2D attachedTransformRigidbody;
     public float attachedMass;
     public new Rigidbody2D rigidbody;
 
@@ -31,6 +32,10 @@ public class PhysicsRope : RopeRenderer
             //float tensionForceMagnitude = tensionForce.magnitude;
 
             rigidbody.AddForceAtPosition(attachedMass * tensionForce, start.position);
+            if (attachedTransformRigidbody != null)
+            {
+                attachedTransformRigidbody.AddForceAtPosition(-attachedMass * tensionForce, end.position);
+            }
             //rigidbody.AddForce(rigidbody.mass * tensionForce);
         }
 
