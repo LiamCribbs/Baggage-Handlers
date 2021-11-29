@@ -15,10 +15,16 @@ MonoBehaviour:
   luggage:
   - luggage: {fileID: 7295345181779800626, guid: 864157fb4d71c51459d3366296a49902, type: 3}
     spawnWeight: 50
-    SPAWN_CHANCE: 33%
-  - luggage: {fileID: 7295345181779800626, guid: 864157fb4d71c51459d3366296a49902, type: 3}
+    SPAWN_CHANCE: 20%
+  - luggage: {fileID: 7295345181779800626, guid: fd8a5d52584f967449b0c13a9c011e66, type: 3}
     spawnWeight: 50
-    SPAWN_CHANCE: 33%
-  - luggage: {fileID: 7295345181779800626, guid: 864157fb4d71c51459d3366296a49902, type: 3}
+    SPAWN_CHANCE: 20%
+  - luggage: {fileID: 7295345181779800626, guid: bdd841862b7392149be1c4e796a92e58, type: 3}
     spawnWeight: 50
-    SPAWN_CHANCE: 33%
+    SPAWN_CHANCE: 20%
+  - luggage: {fileID: 7295345181779800626, guid: 64c7c113fa2f22d438d5bd227ea5ee22, type: 3}
+    spawnWeight: 50
+    SPAWN_CHANCE: 20%
+  - luggage: {fileID: 7295345181779800626, guid: f206e5cd8ced9404abc08b64d5a59a74, type: 3}
+    spawnWeight: 50
+    SPAWN_CHANCE: 20%

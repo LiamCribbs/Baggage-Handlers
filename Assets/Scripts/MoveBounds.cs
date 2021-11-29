@@ -41,6 +41,16 @@ public class MoveBounds : MonoBehaviour
         return point;
     }
 
+    public bool IsInBounds(Vector3 point)
+    {
+        return point.x > LeftWorld && point.x < RightWorld && point.y > BottomWorld && point.y < TopWorld;
+    }
+
+    public bool IsInOuterBounds(Vector3 point)
+    {
+        return point.x > OuterLeftWorld && point.x < OuterRightWorld && point.y > OuterBottomWorld && point.y < OuterTopWorld;
+    }
+
 #if UNITY_EDITOR
     public Color DEBUG_COLOR = new Color(0.54f, 0.2f, 1f);
     public Color DEBUG_COLOR_2 = new Color(0.4f, 0.12f, 0.8f);
