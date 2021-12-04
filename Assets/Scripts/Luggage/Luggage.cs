@@ -10,6 +10,11 @@ public class Luggage : MonoBehaviour
 
     public float windMultiplier = 1f;
 
+    void Start()
+    {
+        DestroyTrigger.instance.destroyableObjects.Add(transform);
+    }
+
     void FixedUpdate()
     {
         rigidbody.AddForce(Weather.Wind * (windMultiplier * Time.fixedDeltaTime));

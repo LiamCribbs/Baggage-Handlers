@@ -17,6 +17,11 @@ public class Harpoon : MonoBehaviour
 
     public float attachForceMultiplier = 1f;
 
+    void Start()
+    {
+        DestroyTrigger.instance.destroyableObjects.Add(transform);
+    }
+
     public void Initialize(HarpoonGun gun)
     {
         Gun = gun;

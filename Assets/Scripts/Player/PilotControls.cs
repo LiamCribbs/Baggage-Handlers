@@ -10,6 +10,9 @@ public class PilotControls : MonoBehaviour
     public float outOfBoundsDeceleration;
     Vector2 moveAcceleration;
 
+    public Vector4 moveRotation;
+    public float rotationSpeed;
+
     public MoveBounds bounds;
 
     void Update()
@@ -18,21 +21,27 @@ public class PilotControls : MonoBehaviour
 
         // Get wasd input
         Vector2 input = new Vector2();
+        float angle = 0f;
+
         if (Input.GetKey(KeyCode.D))
         {
             input.x += 1f;
+            angle += moveRotation.x;
         }
         if (Input.GetKey(KeyCode.A))
         {
             input.x -= 1f;
+            angle += moveRotation.y;
         }
         if (Input.GetKey(KeyCode.W))
         {
             input.y += 1f;
+            angle += moveRotation.z;
         }
         if (Input.GetKey(KeyCode.S))
         {
             input.y -= 1f;
+            angle += moveRotation.w;
         }
 
         bool outOfBounds;
@@ -87,5 +96,7 @@ public class PilotControls : MonoBehaviour
 
         // Clamp position to the outer bounds
         transform.localPosition = bounds.ClampToOuterBounds(position);
+
+        transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(transform.localEulerAngles.z, angle, rotationSpeed * Time.deltaTime));
     }
 }
