@@ -15,6 +15,23 @@ public class PilotControls : MonoBehaviour
 
     public MoveBounds bounds;
 
+    public int maxHealth;
+    public int Health { get; private set; }
+
+    public int planeCollisionDamage;
+    public int debrisCollisionDamage;
+
+    public float takeDamageCooldown;
+    Coroutine damageCooldownCoroutine;
+
+    public float hitDebrisShake;
+    public float hitPlaneShake;
+
+    void Start()
+    {
+        Health = maxHealth;
+    }
+
     void Update()
     {
         Vector3 position = transform.localPosition;
@@ -98,5 +115,74 @@ public class PilotControls : MonoBehaviour
         transform.localPosition = bounds.ClampToOuterBounds(position);
 
         transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(transform.localEulerAngles.z, angle, rotationSpeed * Time.deltaTime));
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        int layer = collision.collider.gameObject.layer;
+        if (layer == DeployDebris.DebrisLayer)
+        {
+            collision.collider.enabled = false;
+            OnHitDebris();
+        }
+        else if (layer == LuggageManager.LuggagePlaneLayer)
+        {
+            OnHitPlane();
+        }
+    }
+
+    void OnHitDebris()
+    {
+        if (damageCooldownCoroutine != null)
+        {
+            return;
+        }
+
+        TakeDamage(debrisCollisionDamage);
+        CameraController.instance.Shake(hitDebrisShake);
+    }
+
+    void OnHitPlane()
+    {
+        if (damageCooldownCoroutine != null)
+        {
+            return;
+        }
+
+        TakeDamage(planeCollisionDamage);
+        CameraController.instance.Shake(hitPlaneShake);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Health -= damage;
+        if (Health <= 0)
+        {
+            Health = 0;
+            Die();
+        }
+        else
+        {
+            damageCooldownCoroutine = StartCoroutine(DamageCooldownCoroutine());
+        }
+
+        ScoreManager.instance.UpdateHealthBar(this);
+    }
+
+    public void Die()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator DamageCooldownCoroutine()
+    {
+        float time = 0f;
+        while (time < takeDamageCooldown)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        damageCooldownCoroutine = null;
     }
 }

@@ -104,6 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 7295345181779800631}
+  colliders:
+  - {fileID: 8374142932950594118}
   windMultiplier: 1
 --- !u!212 &7295345181779800625
 SpriteRenderer:

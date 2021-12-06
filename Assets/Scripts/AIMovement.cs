@@ -1,37 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pigeon;
+using Pigeon.Math;
 
 public class AIMovement : MonoBehaviour
 {
     public float speed;
-    private float waitTime;
-    public float startWaitTime; 
+    public Vector2 waitTime;
 
-    public Transform[] moveSpots;
-    private int randomSpot;
+    public MoveBounds[] moveBounds;
+    public MoveBounds currentBounds;
 
-    // Start is called before the first frame update
     void Start()
     {
-        waitTime = startWaitTime; 
-        randomSpot = Random.Range(0, moveSpots.Length); 
+        StartCoroutine(Move());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, moveSpots[randomSpot].position, speed * Time.deltaTime);
+    //void Update()
+    //{
+    //    transform.position = vector2.movetowards(transform.position, movespots[randomspot].position, speed * time.deltatime);
 
-        if(Vector2.Distance(transform.position,moveSpots[randomSpot].position) < 0.2f)
+    //    if (vector2.distance(transform.position, movespots[randomspot].position) < 0.2f)
+    //    {
+    //        if (waittime <= 0)
+    //        {
+    //            randomspot = random.range(0, movespots.length);
+    //            waittime = startwaittime;
+    //        }
+    //        else
+    //        {
+    //            waittime -= time.deltatime;
+    //        }
+    //    }
+    //}
+
+    IEnumerator Move()
+    {
+        while (true)
         {
-            if(waitTime <= 0)
+            Vector2 startPos = transform.localPosition;
+            Vector2 endPos = currentBounds.RandomPointWorld();
+            float distance = (endPos - startPos).MagFast();
+            float speed = 1f / (distance / this.speed);
+
+            float time = 0f;
+
+            while (time < 1f)
             {
-                randomSpot = Random.Range(0, moveSpots.Length);
-                waitTime = startWaitTime; 
-            } else
+                time += speed * Time.deltaTime;
+                if (time > 1f)
+                {
+                    time = 1f;
+                }
+
+                transform.localPosition = Vector2.Lerp(startPos, endPos, EaseFunctions.EaseInOutCubic(time));
+                yield return null;
+            }
+
+            float waitTime = UnityEngine.Random.Range(this.waitTime.x, this.waitTime.y);
+            time = 0f;
+
+            while (time < waitTime)
             {
-                waitTime -= Time.deltaTime; 
+                time += Time.deltaTime;
+                yield return null;
             }
         }
     }

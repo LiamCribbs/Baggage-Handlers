@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LuggageManager : MonoBehaviour
 {
+    public const int LuggagePlaneLayer = 8;
+
     public LuggageList luggageList;
 
     public Transform luggageSpawnPosition;

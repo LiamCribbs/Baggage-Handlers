@@ -51,6 +51,11 @@ public class MoveBounds : MonoBehaviour
         return point.x > OuterLeftWorld && point.x < OuterRightWorld && point.y > OuterBottomWorld && point.y < OuterTopWorld;
     }
 
+    public Vector2 RandomPointWorld()
+    {
+        return new Vector2(Random.Range(LeftWorld, RightWorld), Random.Range(BottomWorld, TopWorld));
+    }
+
 #if UNITY_EDITOR
     public Color DEBUG_COLOR = new Color(0.54f, 0.2f, 1f);
     public Color DEBUG_COLOR_2 = new Color(0.4f, 0.12f, 0.8f);

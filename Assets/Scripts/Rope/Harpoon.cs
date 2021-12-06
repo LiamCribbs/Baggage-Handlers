@@ -5,6 +5,7 @@ using UnityEngine;
 public class Harpoon : MonoBehaviour
 {
     public PhysicsRope rope;
+    public new Collider2D collider;
 
     public HarpoonGun Gun { get; private set; }
     public Rigidbody2D Rigidbody
@@ -62,23 +63,23 @@ public class Harpoon : MonoBehaviour
         // Assign ourselves to the hit luggage object
         if (hitLuggage)
         {
-            hitLuggage.AttachedHarpoon = this;
+            hitLuggage.AttachHarpoon(this);
         }
     }
 
-    public void Detach()
+    public Luggage Detach()
     {
         // Don't do anything if we're already detached
         if (!attached)
         {
-            return;
+            return null;
         }
 
         attached = false;
 
         if (Rigidbody.TryGetComponent(out Luggage hitLuggage))
         {
-            hitLuggage.AttachedHarpoon = null;
+            hitLuggage.DetachHarpoon();
         }
 
         Vector3 velocity = Rigidbody.velocity;
@@ -87,6 +88,8 @@ public class Harpoon : MonoBehaviour
         transform.SetParent(null);
 
         Rigidbody.mass = 5f;
+
+        return hitLuggage;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
