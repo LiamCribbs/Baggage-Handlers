@@ -9,6 +9,7 @@ public class AudioClips : MonoBehaviour
     public AudioSource source;
 
     public AudioClip[] luggageHit;
+    public AudioClip impact;
 
     void Awake()
     {

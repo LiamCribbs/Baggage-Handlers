@@ -155,6 +155,8 @@ public class PilotControls : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        AudioClips.instance.source.PlayOneShot(AudioClips.instance.impact, 0.5f);
+
         Health -= damage;
         if (Health <= 0)
         {

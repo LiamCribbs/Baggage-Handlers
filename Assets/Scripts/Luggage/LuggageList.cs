@@ -62,10 +62,12 @@ public class LuggageList : ScriptableObject
             spawnWeightSum += luggage[i].spawnWeight;
         }
 
+# if UNITY_EDITOR
         for (int i = 0; i < length; i++)
         {
             luggage[i].SPAWN_CHANCE = Mathf.RoundToInt((float)luggage[i].spawnWeight / spawnWeightSum * 100f).ToString() + '%';
         }
+#endif
     }
 }
 
