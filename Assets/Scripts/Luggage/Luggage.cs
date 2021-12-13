@@ -15,6 +15,10 @@ public class Luggage : MonoBehaviour
 
     float initialGravityScale;
 
+    public bool popLuggage = true;
+
+    public Pigeon.Animator animator;
+
     void Start()
     {
         DestroyTrigger.instance.destroyableObjects.Add(transform);
@@ -30,6 +34,11 @@ public class Luggage : MonoBehaviour
     {
         AttachedHarpoon = harpoon;
         rigidbody.gravityScale = 1f;
+
+        if (animator != null)
+        {
+            animator.Play(animator.currentAnimation);
+        }
     }
 
     public void DetachHarpoon()
@@ -62,5 +71,10 @@ public class Luggage : MonoBehaviour
 
         DestroyTrigger.instance.destroyableObjects.Remove(transform);
         Destroy(gameObject);
+    }
+
+    public void SpawnFallingCat()
+    {
+        Instantiate(LuggageManager.instance.fallingCatPrefab, transform.position, transform.rotation).transform.localScale = transform.localScale;
     }
 }

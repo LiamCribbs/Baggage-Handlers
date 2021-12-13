@@ -6,7 +6,7 @@ public class DeployDebris : MonoBehaviour
 {
     public const int DebrisLayer = 9;
 
-    public GameObject debrisPrefab;
+    public GameObject[] debrisPrefabs;
     public Vector2 waitTime;
     public AnimationCurve waitCurve;
 
@@ -23,7 +23,7 @@ public class DeployDebris : MonoBehaviour
 
     private void SpawnDebris()
     {
-        GameObject debris = Instantiate(debrisPrefab, spawnBounds.RandomPointWorld(), Quaternion.Euler(0f, 0f, Random.value * 360f));
+        GameObject debris = Instantiate(debrisPrefabs[Random.Range(0, debrisPrefabs.Length)], spawnBounds.RandomPointWorld(), Quaternion.identity/*Quaternion.Euler(0f, 0f, Random.value * 360f)*/);
         debris.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(minVelocity.x, maxVelocity.x), Random.Range(minVelocity.y, maxVelocity.y));
         DestroyTrigger.instance.destroyableObjects.Add(debris.transform);
         //d.transform.position = new Vector2(screenBounds.x, Random.Range(-screenBounds.y, screenBounds.y));

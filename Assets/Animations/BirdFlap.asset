@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2229b67fb8abbf047a65a6a01ad023d3, type: 3}
+  m_Name: BirdFlap
+  m_EditorClassIdentifier: 
+  loop: 1
+  mirror: 0
+  frameDelay: 0.12
+  sprites:
+  - {fileID: 21300000, guid: debbe28c48074f443996e98e89c328b4, type: 3}
+  - {fileID: 21300000, guid: 469a2fe2226a4c94994a137d8aef9c82, type: 3}
+  - {fileID: 21300000, guid: 5d312dfb9405a584cab93273e84c3fd8, type: 3}
+  - {fileID: 21300000, guid: 4296e45fa23134a4f837621997ffba83, type: 3}
+  - {fileID: 21300000, guid: e63f36a8d96ff6e40ad0ad8d87329184, type: 3}
+  - {fileID: 21300000, guid: b8f5d660b009b99408e70dcb9a22d11a, type: 3}
+  endSprite: {fileID: 0}

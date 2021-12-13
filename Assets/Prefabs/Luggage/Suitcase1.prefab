@@ -107,6 +107,8 @@ MonoBehaviour:
   colliders:
   - {fileID: 8374142932950594118}
   windMultiplier: 1
+  popLuggage: 1
+  animator: {fileID: 0}
 --- !u!212 &7295345181779800625
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -209,6 +209,8 @@ MonoBehaviour:
   - {fileID: 3874167873924874922}
   - {fileID: 6292548165071415569}
   windMultiplier: 1
+  popLuggage: 0
+  animator: {fileID: 0}
 --- !u!212 &7295345181779800625
 SpriteRenderer:
   m_ObjectHideFlags: 0

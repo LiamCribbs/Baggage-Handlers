@@ -18,7 +18,7 @@ namespace Pigeon
         Coroutine animationCoroutine;
 
         public System.Action<int> onSpriteChanged;
-        public System.Action onAnimationComplete;
+        public UnityEngine.Events.UnityEvent onAnimationComplete;
 
         public bool IsPlaying
         {
@@ -30,11 +30,32 @@ namespace Pigeon
             get => IsPlaying && currentAnimation.loop;
         }
 
+        public void DestroyGameObject()
+        {
+            //Destroy(gameObject);
+            StartCoroutine(FadeOut());
+        }
+
         public void Play(FrameAnimation animation)
         {
             Stop();
             currentAnimation = animation;
             animationCoroutine = StartCoroutine(Animate());
+        }
+
+        IEnumerator FadeOut()
+        {
+            SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+            float time = 0f;
+
+            while (time < 1f)
+            {
+                time += Time.deltaTime * 2f;
+                renderer.color = new Color(1f, 1f, 1f, 1f - Pigeon.EaseFunctions.EaseInQuadratic(time));
+                yield return null;
+            }
+
+            Destroy(gameObject);
         }
 
         public void Play(int animationIndex)

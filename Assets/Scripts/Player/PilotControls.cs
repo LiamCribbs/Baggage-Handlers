@@ -171,7 +171,7 @@ public class PilotControls : MonoBehaviour
 
     public void Die()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2/*UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex*/);
     }
 
     IEnumerator DamageCooldownCoroutine()

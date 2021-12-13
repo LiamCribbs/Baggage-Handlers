@@ -23,6 +23,12 @@ public class HarpoonGun : MonoBehaviour
 
     readonly List<Harpoon> harpoons = new List<Harpoon>(16);
 
+    public AudioSource audioSource;
+    public AudioClip shootClip;
+    public float shootVolume;
+
+    public AudioSource reelSource;
+
     void Start()
     {
         
@@ -46,11 +52,27 @@ public class HarpoonGun : MonoBehaviour
             harpoon.Initialize(this);
             harpoon.Rigidbody.velocity = direction * shootSpeed;
             harpoons.Add(harpoon);
+
+            ScoreManager.instance.harpoonsText.text = harpoons.Count.ToString();
+
+            audioSource.PlayOneShot(shootClip, shootVolume);
         }
 
         // Reel in
         if (Input.GetKey(KeyCode.Mouse1))
         {
+            if (harpoons.Count > 0)
+            {
+                if (!reelSource.isPlaying)
+                {
+                    reelSource.Play();
+                }
+            }
+            else if (reelSource.isPlaying)
+            {
+                reelSource.Stop();
+            }
+
             for (int i = 0; i < harpoons.Count; i++)
             {
                 Harpoon harpoon = harpoons[i];
@@ -74,9 +96,14 @@ public class HarpoonGun : MonoBehaviour
                     harpoon.rope.start = harpoon.transform;
 
                     harpoons.Remove(harpoon);
+                    ScoreManager.instance.harpoonsText.text = harpoons.Count.ToString();
                     i--;
                 }
             }
+        }
+        else if (reelSource.isPlaying)
+        {
+            reelSource.Stop();
         }
     }
 

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2229b67fb8abbf047a65a6a01ad023d3, type: 3}
+  m_Name: Lightning0
+  m_EditorClassIdentifier: 
+  loop: 0
+  mirror: 0
+  frameDelay: 0.1
+  sprites:
+  - {fileID: 21300000, guid: 322010ef78618dd40a35962d7cd7e858, type: 3}
+  - {fileID: 21300000, guid: 0aefd90d63148bc4bbd36a4ea9e8287d, type: 3}
+  - {fileID: 21300000, guid: 1119b7d5637ad4443a3c01c9b80319e5, type: 3}
+  - {fileID: 21300000, guid: 2d6a412e7235c7247808200758374c43, type: 3}
+  - {fileID: 21300000, guid: 472ef16235b164e479e9a7a9ebf08c95, type: 3}
+  endSprite: {fileID: 0}

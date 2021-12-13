@@ -6,6 +6,8 @@ public class LuggageManager : MonoBehaviour
 {
     public const int LuggagePlaneLayer = 8;
 
+    public static LuggageManager instance;
+
     public LuggageList luggageList;
 
     public Transform luggageSpawnPosition;
@@ -16,6 +18,21 @@ public class LuggageManager : MonoBehaviour
 
     public float spawnSpeed;
     public float spawnSpin;
+
+    [Space(20)]
+    public GameObject luggagePopPrefab;
+    public Sprite[] luggagePopSprites;
+    [Range(0f, 1f)] public float luggagePopChance;
+    public int luggagePopCountMax;
+    public Vector2 luggagePopVelocity;
+
+    [Space(20)]
+    public GameObject fallingCatPrefab;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {

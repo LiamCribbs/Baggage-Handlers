@@ -21,6 +21,9 @@ public class ScoreManager : MonoBehaviour
     public float removeHealthSpeed;
     Coroutine removeHealthCoroutine;
 
+    [Space(20)]
+    public TextMeshProUGUI harpoonsText;
+
     void Awake()
     {
         instance = this;

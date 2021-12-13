@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2229b67fb8abbf047a65a6a01ad023d3, type: 3}
+  m_Name: SuitcaseOpen0
+  m_EditorClassIdentifier: 
+  loop: 0
+  mirror: 0
+  frameDelay: 0.09
+  sprites:
+  - {fileID: 21300000, guid: 9a8b04e0bff0f104895dddb5f7f1d980, type: 3}
+  - {fileID: 21300000, guid: f445ccc8eee5d4348934f616d729633c, type: 3}
+  - {fileID: 21300000, guid: bf4151d7f9070344095dabe05e666f17, type: 3}
+  - {fileID: 21300000, guid: e4bcd1ff2f20d72499f45f3a6bb7fadf, type: 3}
+  - {fileID: 21300000, guid: 74fa5a1ec2c1a71408be4c37198714da, type: 3}
+  - {fileID: 21300000, guid: a153998fccaeacd488ae363077cff0fe, type: 3}
+  - {fileID: 21300000, guid: 5ee185f50bc21ec4981bad917d4cd4ad, type: 3}
+  - {fileID: 21300000, guid: deaa102aba981994f9d796602b915f1c, type: 3}
+  endSprite: {fileID: 0}

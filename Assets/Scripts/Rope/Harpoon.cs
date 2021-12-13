@@ -44,7 +44,28 @@ public class Harpoon : MonoBehaviour
             return;
         }
 
+        if (attachedRigidbody.gameObject.layer == DeployDebris.DebrisLayer)
+        {
+            attachedRigidbody.GetComponent<Collider2D>().enabled = false;
+        }
+
         Vector2 velocity = Rigidbody.velocity;
+
+        // Pop out luggage contents
+        if (hitLuggage != null && hitLuggage.popLuggage && Random.value <= LuggageManager.instance.luggagePopChance)
+        {
+            int luggagePops = Random.Range(1, LuggageManager.instance.luggagePopCountMax + 1);
+            for (int i = 0; i < luggagePops; i++)
+            {
+                Rigidbody2D luggageItem = Instantiate(LuggageManager.instance.luggagePopPrefab, attachedRigidbody.transform.localPosition, Quaternion.Euler(0f, 0f, Random.value * 360f)).GetComponent<Rigidbody2D>();
+                SpriteRenderer luggageItemSprite = luggageItem.GetComponent<SpriteRenderer>();
+                luggageItemSprite.sprite = LuggageManager.instance.luggagePopSprites[Random.Range(0, LuggageManager.instance.luggagePopSprites.Length)];
+                luggageItemSprite.color = Random.ColorHSV(0f, 1f, 0f, 1f, 0.7f, 1f);
+                luggageItem.velocity = attachedRigidbody.velocity + new Vector2(Random.Range(-LuggageManager.instance.luggagePopVelocity.x, LuggageManager.instance.luggagePopVelocity.x),
+                    Random.Range(-LuggageManager.instance.luggagePopVelocity.y, LuggageManager.instance.luggagePopVelocity.y));
+                DestroyTrigger.instance.destroyableObjects.Add(luggageItem.transform);
+            }
+        }
 
         attached = true;
         // Destroy current rigidbody if it's on this gameObject
@@ -64,6 +85,7 @@ public class Harpoon : MonoBehaviour
         if (hitLuggage)
         {
             hitLuggage.AttachHarpoon(this);
+            AudioClips.instance.source.PlayOneShot(AudioClips.instance.luggageHit[Random.Range(0, AudioClips.instance.luggageHit.Length)]);
         }
     }
 
